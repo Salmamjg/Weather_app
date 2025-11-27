@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weather App</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="current-info">
+        <div class="date-container">
+          <!--<div class="time" id="time">
+            {% if weather %} {{ weather.local_time }} {% else %} --:-- {% endif%}
+          </div>
+        
+          <div class="date" id="date">
+            {% if weather %} {{ weather.date }} {% else %} -- {% endif %}
+          </div>
+        -->
+
+          <div class="place-container">
+            <div class="time-zone" id="time-zone">
+              {% if weather %} {{ weather.name }} {% endif %}
+            </div>
+
+            <div id="country" class="country">
+              {% if weather %} {{ weather.sys.country }} {% endif %}
+            </div>
+          </div>
+
+          <form method="POST">
+            <select name="city">
+              <option value="">Select a city</option>
+              <option value="Casablanca">Casablanca</option>
+              <option value="Rabat">Rabat</option>
+              <option value="Marrakech">Marrakech</option>
+              <option value="Paris">Paris</option>
+              <option value="London">London</option>
+              <option value="Moscow">Moscow</option>
+            </select>
+
+            <button type="submit">Get Weather</button>
+          </form>
+
+          {% if weather %}
+          <div class="weather-summary">
+            <div class="temp-icon">
+              <img src="{{ icon_url}}" alt="Weather Icon" />
+              <h1>{{ weather.main.temp }}°C</h1>
+            </div>
+            <p>{{ weather.weather[0].description | capitalize }}</p>
+          </div>
+
+          <div class="others" id="current-weather-items">
+            <div class="weather-items">
+              <div>Humidity</div>
+              <div>
+                {% if weather %} {{ weather.main.humidity }}% {% else %} -- {%
+                endif %}
+              </div>
+            </div>
+
+            <div class="weather-items">
+              <div>Pressure</div>
+              <div>
+                {% if weather %} {{ weather.main.pressure }} hPa {% else %} --
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="weather-items">
+              <div>Wind speed</div>
+              <div>
+                {% if weather %} {{ weather.wind.speed }} m/s {% else %} -- {%
+                endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {% endif %}
+    </div>
+  </body>
+</html>
