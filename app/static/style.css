@@ -10,8 +10,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  background: url("../static/images/background.jpg") no-repeat center
-    center fixed;
+  background: url("../static/images/Background.jpg") no-repeat center center
+    fixed;
   height: 100vh;
   overflow-x: hidden;
   color: #fff;
